@@ -7,12 +7,16 @@ from .export import generate_publications_excel
 app = FastAPI(title="Faculty Research Portal API")
 
 # Allow frontend access
+app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # change to domain later
+    allow_origins=["*"],  # allow GitHub Pages
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 @app.get("/")
